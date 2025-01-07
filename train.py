@@ -1,47 +1,60 @@
 import mlflow
 import mlflow.sklearn
 import argparse
-from sklearn.datasets import fetch_california_housing
+import platform
+import psutil
+import time
+from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import SGDRegressor
-from sklearn.metrics import mean_squared_error, r2_score
-
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, log_loss
 
 
 # mlflow_server_uri = 'http://127.0.0.1:5000/'
 # mlflow.set_tracking_uri(mlflow_server_uri)
-# mlflow.set_experiment("california house price estimation")
+# mlflow.set_experiment("exp2")
 
 def train_model(learning_rate, test_size, epochs):
     with mlflow.start_run():
-        data = fetch_california_housing(as_frame=True)
-        X = data.data
-        y = data.target
+        start_time = time.time()
 
-
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42 )
-
+        # Load dataset
+        iris = load_iris()
+        X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=test_size, random_state=42)
 
         #train
-        model = SGDRegressor(max_iter=epochs, eta0=learning_rate, learning_rate='constant')
+        model = RandomForestClassifier(n_estimators=epochs)
         model.fit(X_train, y_train)
 
-        #evalution
+        # Evaluate the model
         y_pred = model.predict(X_test)
-        mse = mean_squared_error(y_test, y_pred)
-        r2 = r2_score(y_test, y_pred)
+        y_pred_proba = model.predict_proba(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        loss = log_loss(y_test, y_pred_proba)
+
 
         #hyper parameters
         mlflow.log_param("learning_rate", learning_rate)
         mlflow.log_param("test_size", test_size)
         mlflow.log_param("epochs", epochs)
 
-        #performance metrics
-        mlflow.log_metric("mse", mse)
-        mlflow.log_metric("r2_score", r2)
+        mlflow.log_param("system", platform.system())
+        mlflow.log_param("processor", platform.processor())
+        mlflow.log_param("cpu_cores", psutil.cpu_count(logical=False))
+        mlflow.log_param("memory_gb", round(psutil.virtual_memory().total / (1024 ** 3), 2))
+        mlflow.log_param("python_version", platform.python_version())
+
+
+        # Log metrics
+        mlflow.log_metric("accuracy", accuracy)
+        mlflow.log_metric("loss", loss)
 
         #model
         mlflow.sklearn.log_model(model, "SGDRegressor_model")
+        
+        # Log runtime
+        runtime_seconds = time.time() - start_time
+        mlflow.log_metric("runtime_seconds", runtime_seconds)
 
 
 if __name__=="__main__":
