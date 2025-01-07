@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/my_own_stuff/mlops/code_files/CDCI%2BMLFlow/mlflow_projects/mlruns/0/2dc37b13877f4bceb124f71cfecc6d21/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2dc37b13877f4bceb124f71cfecc6d21
+run_name: hilarious-crane-844
+run_uuid: 2dc37b13877f4bceb124f71cfecc6d21
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736160641301
+status: 1
+tags: []
+user_id: mehr

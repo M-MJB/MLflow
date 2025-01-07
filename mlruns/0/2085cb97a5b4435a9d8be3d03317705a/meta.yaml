@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/my_own_stuff/mlops/code_files/CDCI%2BMLFlow/mlflow_projects/mlruns/0/2085cb97a5b4435a9d8be3d03317705a/artifacts
+end_time: 1736087422287
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2085cb97a5b4435a9d8be3d03317705a
+run_name: debonair-wren-725
+run_uuid: 2085cb97a5b4435a9d8be3d03317705a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736087414054
+status: 3
+tags: []
+user_id: Mehrnaz

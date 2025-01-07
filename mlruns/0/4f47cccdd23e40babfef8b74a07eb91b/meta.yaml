@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/my_own_stuff/mlops/code_files/CDCI%2BMLFlow/mlflow_projects/mlruns/0/4f47cccdd23e40babfef8b74a07eb91b/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4f47cccdd23e40babfef8b74a07eb91b
+run_name: painted-yak-949
+run_uuid: 4f47cccdd23e40babfef8b74a07eb91b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736163641891
+status: 1
+tags: []
+user_id: mehr

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/my_own_stuff/mlops/code_files/CDCI%2BMLFlow/mlflow_projects/mlruns/0/ea15db8c646e488f9c9324a990502faf/artifacts
+end_time: 1736092432559
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ea15db8c646e488f9c9324a990502faf
+run_name: suave-zebra-398
+run_uuid: ea15db8c646e488f9c9324a990502faf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736092427375
+status: 4
+tags: []
+user_id: mehr
