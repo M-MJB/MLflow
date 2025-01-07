@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mlflow-server
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 0.0.0.0 --port 10000
+    envVars:
+      - key: MLFLOW_TRACKING_URI
+        value: http://mlflow-server.onrender.com

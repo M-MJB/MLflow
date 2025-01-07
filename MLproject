@@ -1,0 +1,9 @@
+name: MLflow Render Project
+
+entry_points:
+  main:
+    parameters:
+      learning_rate: {type: float, default: 0.01}
+      test_size: {type: float, default: 0.2}
+      epochs: {type: int, default: 50}
+    command: "python train.py --lr {learning_rate} --test_size {test_size} --epochs {epochs}"
